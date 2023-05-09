@@ -1,4 +1,5 @@
 <?php
+
 namespace cbCownDownWidget;
 
 if (!defined('ABSPATH')) {
@@ -7,7 +8,7 @@ if (!defined('ABSPATH')) {
 
 class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
 {
-    
+
     public function get_name()
     {
         return 'cb-countdown-timer-widget';
@@ -174,21 +175,19 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
                 ],
             ]
         );
-		$this->add_control(
-			'cb_countdown_gap',
-			[
-				'label' => esc_html__( 'Gap', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 5,
-				'max' => 100,
-				'step' => 5,
-				'default' => 15,
-			]
-		);
+        $this->add_control(
+            'cb_countdown_gap',
+            [
+                'label' => esc_html__('Gap', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 5,
+                'max' => 100,
+                'step' => 5,
+                'default' => 15,
+            ]
+        );
 
         $this->end_controls_section();
-
-
     }
 
 
@@ -202,22 +201,22 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
         $function_name = 'cbUpdateCountdown_' . $unique_id;
 
 
-        ?>
+?>
 
         <div class="cb-countdown-timer-widget-area">
             <div id="<?php echo esc_attr($unique_id); ?>" class="cb-countdown-timer" style="gap:<?php echo esc_attr($settings['cb_countdown_gap']); ?>px"></div>
         </div>
 
         <script>
-            jQuery(document).ready(function ($) {
+            jQuery(document).ready(function($) {
 
-            var targetDate = new Date("<?php echo esc_js($target_date); ?>").getTime();
+                var targetDate = new Date("<?php echo esc_js($target_date); ?>").getTime();
 
-            var countdownId = "<?php echo esc_js($unique_id); ?>";
+                var countdownId = "<?php echo esc_js($unique_id); ?>";
 
-            var <?php echo esc_js($function_name); ?> = setInterval(function() {
-                cbUpdateCountdown(countdownId);
-            }, 1000);
+                var <?php echo esc_js($function_name); ?> = setInterval(function() {
+                    cbUpdateCountdown(countdownId);
+                }, 1000);
 
 
                 var countdownInterval = setInterval(cbUpdateCountdown, 1000);
@@ -228,37 +227,37 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
 
 
                     // month checked if enabled from elementor switch panel
-                    <?php if ('yes' === $settings['cb-month-switch']): ?>
+                    <?php if ('yes' === $settings['cb-month-switch']) : ?>
                         var months = Math.floor(timeRemaining / (1000 * 60 * 60 * 24 * 30));
-                    <?php else: ?>
+                    <?php else : ?>
                         var months = '';
                     <?php endif ?>
 
                     // days checked if enabled from elementor switch panel
-                    <?php if ('yes' === $settings['cb-days-switch']): ?>
+                    <?php if ('yes' === $settings['cb-days-switch']) : ?>
                         var days = Math.floor((timeRemaining % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-                    <?php else: ?>
+                    <?php else : ?>
                         var days = '';
                     <?php endif ?>
 
                     // hours checked if enabled from elementor switch panel
-                    <?php if ('yes' === $settings['cb-hours-switch']): ?>
+                    <?php if ('yes' === $settings['cb-hours-switch']) : ?>
                         var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    <?php else: ?>
+                    <?php else : ?>
                         var hours = '';
                     <?php endif ?>
 
                     // minutes checked if enabled from elementor switch panel
-                    <?php if ('yes' === $settings['cb-minutes-switch']): ?>
+                    <?php if ('yes' === $settings['cb-minutes-switch']) : ?>
                         var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                    <?php else: ?>
+                    <?php else : ?>
                         var minutes = '';
                     <?php endif ?>
 
                     // seconds checked if enabled from elementor switch panel
-                    <?php if ('yes' === $settings['cb-seconds-switch']): ?>
+                    <?php if ('yes' === $settings['cb-seconds-switch']) : ?>
                         var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                    <?php else: ?>
+                    <?php else : ?>
                         var seconds = '';
                     <?php endif ?>
 
@@ -270,11 +269,11 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
                     // var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
 
-                    var monthMarkup = months ? '<p class="cb-countdown-timer-month">' + months + '<span> Months</span></p>' : '';
-                    var daysMarkup = days ? '<p class="cb-countdown-timer-days">' + days + '<span> Days</span></p>' : '';
-                    var hoursMarkup = hours ? '<p class="cb-countdown-timer-hours">' + hours + '<span> Hours</span></p>' : '';
-                    var minMarkup = minutes ? '<p class="cb-countdown-timer-minutes">' + minutes + '<span> Minutes</span></p>' : '';
-                    var secondMarkup = seconds ? '<p class="cb-countdown-timer-seconds">' + seconds + '<span> Seconds</span></p>' : '';
+                    var monthMarkup = months !== '' ? '<p class="cb-countdown-timer-month">' + (months || '0') + '<span> Months</span></p>' : '';
+                    var daysMarkup = days !== '' ? '<p class="cb-countdown-timer-days">' + (days || '0') + '<span> Days</span></p>' : '';
+                    var hoursMarkup = hours !== '' ? '<p class="cb-countdown-timer-hours">' + (hours || '0') + '<span> Hours</span></p>' : '';
+                    var minMarkup = minutes !== '' ? '<p class="cb-countdown-timer-minutes">' + (minutes || '0') + '<span> Minutes</span></p>' : '';
+                    var secondMarkup = seconds !== '' ? '<p class="cb-countdown-timer-seconds">' + (seconds || '0') + '<span> Seconds</span></p>' : '';
 
 
 
@@ -289,13 +288,13 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
                     if (timeRemaining <= 0) {
                         clearInterval(countdownInterval);
                         $('#countdown').text('Countdown expired');
-                    }       
+                    }
 
                 }
             });
         </script>
 
 
-        <?php
+<?php
     }
 }
