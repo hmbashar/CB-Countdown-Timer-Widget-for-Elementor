@@ -1,0 +1,7 @@
+.cb-countdown-timer {
+    display: flex;
+    gap:15px
+}
+.cb-countdown-timer p {
+    margin: 0;
+}
