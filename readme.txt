@@ -2,10 +2,13 @@
 Contributors: hmbashar
 Tags: elementor, countdown, timer
 Requires at least: 4.7
-Tested up to: 6.2
-Stable tag: 1.0
+Tested up to: 6.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Elementor tested up to: 3.29
+Elementor Pro tested up to: 3.15
+Requires Plugins: elementor
 
 == Description ==
 CB Countdown Timer Widget for Elementor is a custom widget that allows you to display a countdown timer on your Elementor-powered website. The widget provides a visually appealing way to showcase countdowns to events, product launches, sales, and more.
