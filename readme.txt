@@ -14,7 +14,6 @@ Requires Plugins: elementor
 CB Countdown Timer Widget for Elementor is a custom widget that allows you to display a countdown timer on your Elementor-powered website. The widget provides a visually appealing way to showcase countdowns to events, product launches, sales, and more.
 
 Countdown list:
-
 * Months
 * Days
 * Hours
