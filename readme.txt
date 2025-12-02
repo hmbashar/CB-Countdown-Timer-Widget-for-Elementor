@@ -9,6 +9,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 3.33
 Elementor Pro tested up to: 3.33
 Requires Plugins: elementor
+Requires PHP: 7.4
+
+A customizable Elementor countdown widget to highlight upcoming events, sales, launches, and limited-time offers.
+
 
 == Description ==
 CB Countdown Timer Widget for Elementor is a custom widget that allows you to display a countdown timer on your Elementor-powered website. The widget provides a visually appealing way to showcase countdowns to events, product launches, sales, and more.
