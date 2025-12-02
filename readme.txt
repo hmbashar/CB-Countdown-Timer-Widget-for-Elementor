@@ -2,12 +2,12 @@
 Contributors: hmbashar
 Tags: elementor, countdown, timer
 Requires at least: 4.7
-Tested up to: 6.8
-Stable tag: 1.1.0
+Tested up to: 6.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.29
-Elementor Pro tested up to: 3.15
+Elementor tested up to: 3.33
+Elementor Pro tested up to: 3.33
 Requires Plugins: elementor
 
 == Description ==
@@ -36,6 +36,9 @@ You can customize the appearance and styling of the countdown widget using the b
 Yes, the countdown widget is translation-ready. It uses the text domain 'cb-countdown-timer' for translations. You can translate the countdown text by providing translations in the corresponding language files or using a translation plugin.
 
 == Changelog ==
+= 1.2.0 =
+* Initial release.
+
 = 1.0 =
 * Initial release.
 

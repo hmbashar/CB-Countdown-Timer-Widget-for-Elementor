@@ -5,3 +5,90 @@
 .cb-countdown-timer p {
     margin: 0;
 }
+/* Wrapper: gradient background like the design */
+.cb-countdown-timer-widget-area {
+    padding: 40px 24px;
+    border-radius: 28px;
+    background: linear-gradient(90deg, #ff7a18, #ff3a55, #ffb347, #35d6a8, #10a7b5);
+    display: flex;
+    justify-content: center;
+}
+
+/* Layout of the items */
+.cb-countdown-timer {
+    display: flex;
+    gap: 24px; /* will get overridden by your inline gap from Elementor */
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Each unit (month / day / hour / etc.) */
+.cb-countdown-timer p {
+    position: relative;
+    margin: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* outer soft circle */
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 10px 18px rgba(0, 0, 0, 0.25),
+        0 0 0 4px rgba(255, 255, 255, 0.15);
+    font-weight: 700;
+    font-size: 34px; /* main number size, Elementor typography can override */
+    color: #1f2933;
+    text-align: center;
+}
+
+/* inner circle to create the double ring effect */
+.cb-countdown-timer p::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: #f9fafb;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.18);
+    z-index: -1;
+}
+
+/* Put the number above the inner circle */
+.cb-countdown-timer p {
+    z-index: 1;
+}
+
+/* Label (MONTH / DAYS / etc.) */
+.cb-countdown-timer p span {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f9fafb; /* Elementor text color control can override this */
+}
+
+/* Optional: keep things responsive on smaller screens */
+@media (max-width: 767px) {
+    .cb-countdown-timer-widget-area {
+        padding: 24px 16px;
+    }
+    .cb-countdown-timer p {
+        width: 90px;
+        height: 90px;
+        font-size: 24px;
+    }
+    .cb-countdown-timer p span {
+        bottom: -22px;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+    }
+}

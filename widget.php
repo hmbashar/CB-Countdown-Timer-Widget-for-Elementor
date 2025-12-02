@@ -30,165 +30,325 @@ class cbCownDown_Countdown_Widget extends \Elementor\Widget_Base
     }
 
 
-    protected function register_controls()
-    {
+protected function register_controls() {
 
-        // Content Tab Start
+    /**
+     * CONTENT TAB
+     */
+    $this->start_controls_section(
+        'cb-countdown-section_setting',
+        [
+            'label' => esc_html__( 'Countdown Settings', 'cb-countdown-timer' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+        ]
+    );
 
-        $this->start_controls_section(
-            'cb-countdown-section_setting',
-            [
-                'label' => esc_html__('Countdown Settings', 'cb-countdown-timer'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
+    $this->add_control(
+        'cb_countDown_target_date',
+        [
+            'label'   => esc_html__( 'Date and Time', 'cb-countdown-timer' ),
+            'type'    => \Elementor\Controls_Manager::DATE_TIME,
+            'default' => '2033-05-31 00:00:00',
+        ]
+    );
 
-        $this->add_control(
-            'cb_countDown_target_date',
-            [
-                'label' => esc_html__('Date and Time', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::DATE_TIME,
-                'default' => '2023-05-31 00:00:00',
-            ]
-        );
+    $this->end_controls_section();
 
-        $this->end_controls_section();
+    /**
+     * STYLE TAB → VISIBILITY SWITCHES
+     */
+    $this->start_controls_section(
+        'cb_countdown_switch',
+        [
+            'label' => esc_html__( 'Units Visibility', 'cb-countdown-timer' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
 
-        // Content Tab End
+    $this->add_control(
+        'cb-month-switch',
+        [
+            'label'        => esc_html__( 'Months', 'cb-countdown-timer' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'On', 'cb-countdown-timer' ),
+            'label_off'    => esc_html__( 'Off', 'cb-countdown-timer' ),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
+    );
 
+    $this->add_control(
+        'cb-days-switch',
+        [
+            'label'        => esc_html__( 'Days', 'cb-countdown-timer' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'On', 'cb-countdown-timer' ),
+            'label_off'    => esc_html__( 'Off', 'cb-countdown-timer' ),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
+    );
 
-        // Style Tab Start
+    $this->add_control(
+        'cb-hours-switch',
+        [
+            'label'        => esc_html__( 'Hours', 'cb-countdown-timer' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'On', 'cb-countdown-timer' ),
+            'label_off'    => esc_html__( 'Off', 'cb-countdown-timer' ),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
+    );
 
-        $this->start_controls_section(
-            'cb_countdown_switch',
-            [
-                'label' => esc_html__('Switch', 'cb-countdown-timer'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
+    $this->add_control(
+        'cb-minutes-switch',
+        [
+            'label'        => esc_html__( 'Minutes', 'cb-countdown-timer' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'On', 'cb-countdown-timer' ),
+            'label_off'    => esc_html__( 'Off', 'cb-countdown-timer' ),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
+    );
 
-        $this->add_control(
-            'cb-month-switch',
-            [
-                'label' => esc_html__('Months', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'cb-countdown-timer'),
-                'label_off' => esc_html__('Off', 'cb-countdown-timer'),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-        $this->add_control(
-            'cb-days-switch',
-            [
-                'label' => esc_html__('Days', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'cb-countdown-timer'),
-                'label_off' => esc_html__('Off', 'cb-countdown-timer'),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
-        $this->add_control(
-            'cb-hours-switch',
-            [
-                'label' => esc_html__('Hours', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'cb-countdown-timer'),
-                'label_off' => esc_html__('Off', 'cb-countdown-timer'),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
+    $this->add_control(
+        'cb-seconds-switch',
+        [
+            'label'        => esc_html__( 'Seconds', 'cb-countdown-timer' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'On', 'cb-countdown-timer' ),
+            'label_off'    => esc_html__( 'Off', 'cb-countdown-timer' ),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
+    );
 
-        $this->add_control(
-            'cb-minutes-switch',
-            [
-                'label' => esc_html__('Minutes', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'cb-countdown-timer'),
-                'label_off' => esc_html__('Off', 'cb-countdown-timer'),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
+    $this->end_controls_section();
 
-        $this->add_control(
-            'cb-seconds-switch',
-            [
-                'label' => esc_html__('Seconds', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'cb-countdown-timer'),
-                'label_off' => esc_html__('Off', 'cb-countdown-timer'),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            ]
-        );
+    /**
+     * STYLE TAB → WRAPPER
+     */
+    $this->start_controls_section(
+        'cb_countdown_wrapper_style',
+        [
+            'label' => esc_html__( 'Wrapper', 'cb-countdown-timer' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
 
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name'     => 'cb_wrapper_background',
+            'label'    => esc_html__( 'Background', 'cb-countdown-timer' ),
+            'types'    => [ 'classic', 'gradient' ],
+            'selector' => '{{WRAPPER}} .cb-countdown-timer-widget-area',
+        ]
+    );
 
-        $this->end_controls_section();
+    $this->add_responsive_control(
+        'cb_wrapper_padding',
+        [
+            'label'      => esc_html__( 'Padding', 'cb-countdown-timer' ),
+            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em' ],
+            'default'    => [
+                'top'    => 40,
+                'right'  => 24,
+                'bottom' => 40,
+                'left'   => 24,
+                'unit'   => 'px',
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .cb-countdown-timer-widget-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
 
-        // Style Tab End
+    $this->add_responsive_control(
+        'cb_wrapper_radius',
+        [
+            'label'      => esc_html__( 'Border Radius', 'cb-countdown-timer' ),
+            'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%' ],
+            'default'    => [
+                'top'    => 28,
+                'right'  => 28,
+                'bottom' => 28,
+                'left'   => 28,
+                'unit'   => 'px',
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .cb-countdown-timer-widget-area' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
 
-        $this->start_controls_section(
-            'cb-coundown_style_section',
-            [
-                'label' => esc_html__('Style', 'cb-countdown-timer'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
+    $this->end_controls_section();
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'cb_counDown_text_typography',
-                'selector' => '{{WRAPPER}} .cb-countdown-timer p',
-            ]
-        );
+    /**
+     * STYLE TAB → CIRCLES (NUMBER)
+     */
+    $this->start_controls_section(
+        'cb_coundown_circle_style_section',
+        [
+            'label' => esc_html__( 'Circle / Number', 'cb-countdown-timer' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
 
-        $this->add_control(
-            'cb_coundown_text_color',
-            [
-                'label' => esc_html__('Text Color', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .cb-countdown-timer p' => 'color: {{VALUE}}',
+    // Circle size
+    $this->add_responsive_control(
+        'cb_circle_size',
+        [
+            'label'      => esc_html__( 'Circle Size', 'cb-countdown-timer' ),
+            'type'       => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px' ],
+            'range'      => [
+                'px' => [
+                    'min' => 60,
+                    'max' => 220,
                 ],
-            ]
-        );
+            ],
+            'default'    => [
+                'size' => 120,
+                'unit' => 'px',
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .cb-countdown-timer p' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'cb_counDown_number_typography',
-                'selector' => '{{WRAPPER}} .cb-countdown-timer p span',
-            ]
-        );
+    // Outer circle background
+    $this->add_control(
+        'cb_circle_outer_bg',
+        [
+            'label'     => esc_html__( 'Outer Circle Color', 'cb-countdown-timer' ),
+            'type'      => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .cb-countdown-timer p' => 'background: {{VALUE}};',
+            ],
+        ]
+    );
 
-        $this->add_control(
-            'cb_coundown_number_color',
-            [
-                'label' => esc_html__('Number Color', 'cb-countdown-timer'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .cb-countdown-timer p span' => 'color: {{VALUE}}',
+    // Inner circle background (pseudo-element)
+    $this->add_control(
+        'cb_circle_inner_bg',
+        [
+            'label'     => esc_html__( 'Inner Circle Color', 'cb-countdown-timer' ),
+            'type'      => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .cb-countdown-timer p::before' => 'background: {{VALUE}};',
+            ],
+        ]
+    );
+
+    // Circle shadow
+    $this->add_group_control(
+        \Elementor\Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'cb_circle_shadow',
+            'selector' => '{{WRAPPER}} .cb-countdown-timer p',
+        ]
+    );
+
+    // Number typography
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cb_countdown_number_typography',
+            'label'    => esc_html__( 'Number Typography', 'cb-countdown-timer' ),
+            'selector' => '{{WRAPPER}} .cb-countdown-timer p',
+        ]
+    );
+
+    // Number color
+    $this->add_control(
+        'cb_countdown_number_color',
+        [
+            'label'     => esc_html__( 'Number Color', 'cb-countdown-timer' ),
+            'type'      => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .cb-countdown-timer p' => 'color: {{VALUE}};',
+            ],
+        ]
+    );
+
+    // Gap between circles (your existing control, kept here)
+    $this->add_control(
+        'cb_countdown_gap',
+        [
+            'label'   => esc_html__( 'Gap Between Circles (px)', 'cb-countdown-timer' ),
+            'type'    => \Elementor\Controls_Manager::NUMBER,
+            'min'     => 5,
+            'max'     => 100,
+            'step'    => 1,
+            'default' => 24,
+        ]
+    );
+
+    $this->end_controls_section();
+
+    /**
+     * STYLE TAB → LABELS (MONTH / DAYS / ETC.)
+     */
+    $this->start_controls_section(
+        'cb_coundown_label_style_section',
+        [
+            'label' => esc_html__( 'Labels', 'cb-countdown-timer' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        ]
+    );
+
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cb_countdown_label_typography',
+            'label'    => esc_html__( 'Label Typography', 'cb-countdown-timer' ),
+            'selector' => '{{WRAPPER}} .cb-countdown-timer p span',
+        ]
+    );
+
+    $this->add_control(
+        'cb_countdown_label_color',
+        [
+            'label'     => esc_html__( 'Label Color', 'cb-countdown-timer' ),
+            'type'      => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .cb-countdown-timer p span' => 'color: {{VALUE}};',
+            ],
+        ]
+    );
+
+    // Distance of label from circle bottom
+    $this->add_responsive_control(
+        'cb_label_offset',
+        [
+            'label'      => esc_html__( 'Label Offset', 'cb-countdown-timer' ),
+            'type'       => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px' ],
+            'range'      => [
+                'px' => [
+                    'min' => -40,
+                    'max' => 40,
                 ],
-            ]
-        );
-        $this->add_control(
-            'cb_countdown_gap',
-            [
-                'label' => esc_html__('Gap', 'textdomain'),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'min' => 5,
-                'max' => 100,
-                'step' => 5,
-                'default' => 15,
-            ]
-        );
+            ],
+            'default'    => [
+                'size' => -28,
+                'unit' => 'px',
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .cb-countdown-timer p span' => 'bottom: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
 
-        $this->end_controls_section();
-    }
+    $this->end_controls_section();
+}
+
 
 
     protected function render()

@@ -2,7 +2,7 @@
 /*
 Plugin Name: CB Countdown Timer Widget for Elementor
 Description: Custom widget for Elementor that displays a countdown timer.
-Version: 1.1.0
+Version: 1.2.0
 Author: Md Abul Bashar
 Author URI: https://facebook.com/hmbashar
 */
